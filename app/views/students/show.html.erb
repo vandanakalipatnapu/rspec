@@ -1,0 +1,12 @@
+<div class="container">
+	<center><h2 class="text-danger"><%= @student.name %></h2></center>
+	<hr/>
+	<h3 class="text-info">College: <%= @student.college.name %></h3><br/>
+	<h4 class="text-success">Student Email:<%= @student.email %></h4>
+	<h4 class="text-success">Date Of Birth:<%= @student.dob %></h4>
+	<h4 class="text-success">Age:<%= @student.age %></h4>
+	<h4 class="text-success">College Location:<%= @student.college.location %></h4>
+	<h4 class="text-success">College Email:<%= @student.college.email %></h4>
+	<h4 class="text-success">College Phone Number:<%= @student.college.phno %></h4>
+	<%= link_to "Back" , students_path, class: "btn btn-sm btn-info"%>
+</div>

@@ -1,0 +1,31 @@
+<center><h2 class="text-danger">All Students</h2></center>
+
+	<div class="container">
+		<%= link_to "New Student",new_student_path ,class: "btn btn-info btn-sm" %>
+		
+		<br/><div class="table">
+				<table class="table table-striped table-hover table-bordered">	
+					<tr class="info">
+						<th class="align">Student Name </th>
+						<th class="align">College</th>
+						<th class="align">Email</th>
+						<th class="align">Date Of Birth</th>
+						<th class= "align">Age</th>
+						<th colspan="5" class="align">Actions</th>
+					</tr>
+					
+					<% @students.each do |student|%>
+						
+						<tr class="textcolor ">
+							<td class="align"><%= student.name %></td>
+							<td class="align"><%= student.college.name if student.college %></td>
+							<td class="align"><%=link_to student.email,student %></td>
+							<td class="align"><%= student.dob %></td>
+							<td class="align"><%= student.age %></td>
+							<td class="align"><%= link_to "Edit",edit_student_path(student) %></td>
+							<td class="align"><%= link_to "Delete",student,method: :delete ,data:{confirm: "Are you sure to delete?"}%></td> 
+					<%end%>
+						
+				</table>
+			</div>
+	</div>

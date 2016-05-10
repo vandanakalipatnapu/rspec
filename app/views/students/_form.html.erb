@@ -1,0 +1,77 @@
+<style>
+	.clr{color:red;}
+</style>
+
+<div class="container">
+<center><h2 class="text-danger">New Student</h2></center>
+<hr/>
+	<div class="form-horizontal">
+		<%= form_for @student do |s| %>
+			
+			<div class="form-group ">
+				<%= s.label :Student_Name,class:"control-label col-sm-3"%>
+			<div class="col-sm-6">
+				<%= s.text_field :name,class:"form-control",id:"title"%>
+			</div>
+			</div>
+
+			<div>
+			
+
+			<div class="form-group">
+				<%= s.label :Email,class:"control-label col-sm-3"%>
+			<div class="col-sm-6">
+				<%= s.email_field :email,class:"form-control"%>
+			</div>
+			</div>
+
+		    <div class="form-group">
+				<%= s.label :Colleges,class:"control-label col-sm-3" %>
+			<div class="col-sm-6">
+				<%= select("student", "college_id", @colleges.collect {|c| [ c.name, c.id ] },{prompt: "select college"},class:"form-control") %>
+			</div>
+
+			<div class="form-group"><br/><br/>
+				<%= s.label :Age,class:"control-label col-sm-3"%>
+			<div class="col-sm-6">
+				<%= s.text_field :age,class:"form-control"%>
+			</div>
+			</div>
+
+			<div class="form-group">
+				<%= s.label :Date_Of_Birth,class:"control-label col-sm-3"%>
+			<div class="col-sm-6">
+				<%= s.text_field :dob,class:"form-control"%>
+			</div>
+			</div>
+
+
+
+			<div class="form-group">
+				<%= s.submit "Save",class:"col-sm-offset-3 btn btn-sm btn-info"%>
+				<%= link_to "All Students",students_path,class:"btn btn-sm btn-info col-sm-offset-0"%>
+			</div>	
+
+		<%end%>
+
+		<% if @student.errors.present? %>
+		    <div id="error_explanation">
+		      <h3 class="text-danger">
+		        <%= pluralize(@student.errors.count, "error") %> prohibited
+		        this article from being saved:
+		      </h3>
+		      
+		      <ul>
+		        <% @student.errors.full_messages.each do |msg| %>
+		          <div class="alert alert-danger">
+		          	<li><%= msg %></li>
+		          </div>
+		        <% end %>
+		      </ul>
+		    
+		    </div>
+  		<% end %>
+
+				
+	</div>
+</div>
