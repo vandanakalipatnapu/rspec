@@ -16,9 +16,11 @@ class CollegesController < ApplicationController
 	def create
 		@college = College.new(college_params)
       	if @college.save
-       		render json: {success: true, message: "college has been created",college: @college}
+       		 render json: {success: true, message: "college has been created",college: @college} 
+       		# redirect_to colleges_path
       	else
-      		render json: {success: false, message: "college hasnot been created",errors: @college.errors.full_messages}
+      		 render json: {success: false, message: "college hasnot been created",errors: @college.errors.full_messages} 
+      		# render 'new'
       	end
 	end
 
@@ -30,10 +32,11 @@ class CollegesController < ApplicationController
 	def update
 		@college = College.find(params[:id])
 		if @college.update(college_params)
-			render json: {success: true,message: "selected college has been updated",college: @college}
+		    render json: {success: true,message: "selected college has been updated",college: @college} 
 			# redirect_to colleges_path
 		else
-			render json: {success: false, message: "selected college hasnot been selected",errors: @college.errors.full_messages}
+			render json: {success: false, message: "selected college hasnot been selected",errors: @college.errors.full_messages} 
+			# render "edit"
 		end
 	end
 
@@ -48,6 +51,7 @@ class CollegesController < ApplicationController
 
 	private 
 		def college_params
+			#if we pass params then test cases will work
 			params.permit(:name,:email,:phno,:location)
 		end
 

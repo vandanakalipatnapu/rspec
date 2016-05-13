@@ -8,9 +8,11 @@ class StudentsController < ApplicationController
 		@colleges = College.all
 		@student = Student.new(student_params)
       if @student.save
-       render json: {success: true,message: "student has been created",student: @student}
+       	render json: {success: true,message: "student has been created",student: @student}
+       	# redirect_to students_path
       else
       	render json: {success: true,message: "student has not been created",errors: @student.errors.full_messages}
+      	# render "new"
       end
     
 	end
